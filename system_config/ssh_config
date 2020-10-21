@@ -1,0 +1,28 @@
+Host *
+ AddKeysToAgent yes
+ UseKeychain yes
+ IdentityFile ~/.ssh/id_rsa
+ ServerAliveInterval 300
+ ServerAliveCountMax 5
+
+Host github
+    HostName github.com
+    User lvxinyan1992@gmail.com
+    IdentityFile ~/.ssh/github_rsa
+
+Host matrix
+    HostName matrix.kezaihui.com
+    User zaihui
+
+Host rbmq
+    HostName 54.223.38.157
+    User zaihui
+
+Host newrelic
+    HostName 54.223.29.159
+    User zaihui
+
+Host gate
+    HostName gate.kezaihui.com
+    User lvxinyan
+
