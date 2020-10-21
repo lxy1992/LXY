@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxifierProfile version="101" platform="MacOSX" product_id="2" product_minver="200">
+    <Options>
+        <Resolve>
+            <AutoModeDetection enabled="false"/>
+            <ViaProxy enabled="true">
+                <TryLocalDnsFirst enabled="false"/>
+            </ViaProxy>
+            <ExclusionList ExcludeSimpleHostnames="true" ExcludeLocalhost="true" ExcludeSelfHostname="true" ExcludeLocalDomain="true">localhost;%SimpleHostnames%;%ComputerName%;*.local;
+</ExclusionList>
+        </Resolve>
+        <Encryption mode="basic"/>
+        <HttpProxiesSupport enabled="false"/>
+        <HandleDirectConnections enabled="false"/>
+        <ConnectionLoopDetection enabled="true"/>
+        <ProcessServices enabled="false"/>
+        <ProcessOtherUsers enabled="false"/>
+    </Options>
+    <ProxyList>
+        <Proxy id="100" type="SOCKS5">
+            <Address>127.0.0.1</Address>
+            <Port>1180</Port>
+            <Options>0</Options>
+        </Proxy>
+        <Proxy id="101" type="SOCKS5">
+            <Address>127.0.0.1</Address>
+            <Port>7891</Port>
+            <Options>0</Options>
+        </Proxy>
+    </ProxyList>
+    <ChainList/>
+    <RuleList>
+        <Rule enabled="false">
+            <Name>rancher</Name>
+            <Targets>rancher*.*</Targets>
+            <Action type="Proxy">100</Action>
+        </Rule>
+        <Rule enabled="true">
+            <Name>ClashX [auto-created]</Name>
+            <Applications>ClashX</Applications>
+            <Action type="Direct"/>
+        </Rule>
+        <Rule enabled="false">
+            <Name>Localhost</Name>
+            <Targets>localhost; 127.0.0.1; ::1; %ComputerName%</Targets>
+            <Action type="Direct"/>
+        </Rule>
+        <Rule enabled="true">
+            <Name>Copy of Localhost</Name>
+            <Targets>zaihuitest0.mongodb.rds.aliyuncs.com;zaihuitest1.mongodb.rds.aliyuncs.com;zaihuitest.mysql.rds.aliyuncs.com</Targets>
+            <Action type="Proxy">100</Action>
+        </Rule>
+        <Rule enabled="false">
+            <Name>github</Name>
+            <Targets>github.com;*.github*.com</Targets>
+            <Action type="Proxy">101</Action>
+        </Rule>
+        <Rule enabled="true">
+            <Name>inter-server</Name>
+            <Targets>demeter.inter.zaihuiba.com</Targets>
+            <Action type="Proxy">100</Action>
+        </Rule>
+        <Rule enabled="true">
+            <Name>kevin</Name>
+            <Targets>172.19.*.*;
+10.0.*.*;
+rancher-test.zaihuiba.com;
+rancher-inter.kezaihui.com;</Targets>
+            <Action type="Proxy">100</Action>
+        </Rule>
+        <Rule enabled="true">
+            <Name>Default</Name>
+            <Action type="Direct"/>
+        </Rule>
+    </RuleList>
+</ProxifierProfile>
